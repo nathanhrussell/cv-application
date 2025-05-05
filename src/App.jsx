@@ -7,6 +7,7 @@ import Preview from "./components/Preview";
 function App() {
   const [showPreview, setShowPreview] = useState(false);
   const [educationList, setEducationList] = useState([]);
+  const [workExperienceList, setWorkExperienceList] = useState([]);
 
   const [generalInfo, setGeneralInfo] = useState({
     name: "",
@@ -22,6 +23,8 @@ function App() {
 
       <Education data={educationList} onChange={setEducationList} />
 
+      <WorkExperience data={workExperienceList} onChange={setWorkExperienceList} />
+
       <div className="mt-8 text-center">
         <button
           className="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700"
@@ -31,7 +34,13 @@ function App() {
         </button>
       </div>
 
-      {showPreview && <Preview generalInfo={generalInfo} educationList={educationList}/>}
+      {showPreview && (
+        <Preview
+        generalInfo={generalInfo}
+        educationList={educationList}
+        workExperienceList={workExperienceList}
+        />
+      )}
     </div>
   );
 }

@@ -1,37 +1,31 @@
-import { useState } from "react";
+function WorkExperience({ data, onChange }) {
+    const handleChange = (id, field, value) => {
+      onChange(
+        data.map((entry) =>
+          entry.id === id ? { ...entry, [field]: value } : entry
+        )
+      );
+    };
 
-function WorkExperience() {
-  const [entries, setEntries] = useState([
-    { id: Date.now(), company: "", positions: "", years: "", isEditing: true },
-  ]);
-
-  const handleChange = (id, field, value) => {
-    setEntries((prev) =>
-      prev.map((entry) =>
-        entry.id === id ? { ...entry, [field]: value } : entry
-      )
-    );
-  };
-
-  const handleSave = (id) => {
-    setEntries((prev) =>
-      prev.map((entry) =>
-        entry.id === id ? { ...entry, isEditing: false } : entry
-      )
-    );
-  };
-
-  const handleEdit = (id) => {
-    setEntries((prev) =>
-      prev.map((entry) =>
-        entry.id === id ? { ...entry, isEditing: true } : entry
-      )
-    );
-  };
-
+    const handleSave = (id) => {
+        onChange(
+          data.map((entry) =>
+            entry.id === id ? { ...entry, isEditing: false } : entry
+          )
+        );
+      };
+    
+      const handleEdit = (id) => {
+        onChange(
+          data.map((entry) =>
+            entry.id === id ? { ...entry, isEditing: true } : entry
+          )
+        );
+      };
+    
   const handleAddEntry = () => {
-    setEntries((prev) => [
-      ...prev,
+    onChange([
+      ...data,
       {
         id: Date.now(),
         company: "",
@@ -43,14 +37,14 @@ function WorkExperience() {
   };
 
   const handleRemoveEntry = (id) => {
-    setEntries((prev) => prev.filter((entry) => entry.id !== id));
+    onChange(data.filter((entry) => entry.id !== id));
   };
 
   return (
     <div className="p-4 border rounded-lg shadow-md max-w-md mx-auto my-6">
-      <h2 className="text-xl font-semibold mb-4">Education</h2>
+      <h2 className="text-xl font-semibold mb-4">Work Experience</h2>
 
-      {entries.map((entry) => (
+      {data.map((entry) => (
         <div
           key={entry.id}
           className="mb-6 border-b pb-4 last:border-b-0 last:pb-0"
@@ -61,10 +55,10 @@ function WorkExperience() {
               <input
                 type="text"
                 className="w-full border p-2 rounded"
-                value={entry.institution}
+                value={entry.company}
                 placeholder="Acme Corp"
                 onChange={(e) =>
-                  handleChange(entry.id, "institution", e.target.value)
+                  handleChange(entry.id, "company", e.target.value)
                 }
                 disabled={!entry.isEditing}
               />
@@ -87,10 +81,10 @@ function WorkExperience() {
               <input
                 type="text"
                 className="w-full border p-2 rounded"
-                value={entry.year}
+                value={entry.years}
                 placeholder="2019-2023"
                 onChange={(e) =>
-                  handleChange(entry.id, "year", e.target.value)
+                  handleChange(entry.id, "years", e.target.value)
                 }
                 disabled={!entry.isEditing}
               />
@@ -127,7 +121,7 @@ function WorkExperience() {
         </div>
       ))}
 
-      <div className="pt-2">
+      <div className="mt-6">
         <button
           className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
           onClick={handleAddEntry}

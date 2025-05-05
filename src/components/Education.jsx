@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function Education({ data, onChange }) {
   const handleChange = (id, field, value) => {
     onChange(
@@ -123,7 +121,7 @@ function Education({ data, onChange }) {
         </div>
       ))}
 
-      <div className="pt-2">
+      <div className="mt-6">
         <button
           className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
           onClick={handleAddEntry}

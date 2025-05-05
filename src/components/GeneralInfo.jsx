@@ -48,7 +48,7 @@ function GeneralInfo({ data, onChange }) {
           />
         </div>
 
-        <div className="pt-2">
+        <div className="mt-6">
           {isEditing ? (
             <button
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
