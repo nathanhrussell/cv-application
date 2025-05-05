@@ -68,10 +68,10 @@ function WorkExperience({ data, onChange }) {
               <input
                 type="text"
                 className="w-full border p-2 rounded"
-                value={entry.qualification}
+                value={entry.position}
                 placeholder="Full Stack Developer"
                 onChange={(e) =>
-                  handleChange(entry.id, "qualification", e.target.value)
+                  handleChange(entry.id, "position", e.target.value)
                 }
                 disabled={!entry.isEditing}
               />

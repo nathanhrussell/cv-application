@@ -14,9 +14,9 @@ function Preview({ generalInfo, educationList, workExperienceList }) {
                 .filter((entry) => !entry.isEditing)
                 .map((entry) => (
                   <li key={entry.id}>
-                    <p className="font-medium">{entry.qualification}</p>
-                    <p>{entry.institution}</p>
-                    <p className="text-sm text-gray-600">{entry.year}</p>
+                    <p><strong>Qualification:</strong> {entry.qualification}</p>
+                    <p><strong>Institution:</strong> {entry.institution}</p>
+                    <p><strong>Year(s):</strong> {entry.year}</p>
                   </li>
                 ))}
             </ul>
@@ -31,10 +31,10 @@ function Preview({ generalInfo, educationList, workExperienceList }) {
                         .filter((entry) => !entry.isEditing)
                         .map((entry) => (
                         <li key={entry.id}>
-                            <p className="font-medium">{entry.position}</p>
-                            <p>{entry.company}</p>
-                            <p className="text-sm text-gray-600">{entry.years}</p>
-                        </li>
+                          <p><strong>Position:</strong> {entry.position}</p>
+                          <p><strong>Company:</strong> {entry.company}</p>
+                          <p><strong>Years:</strong> {entry.years}</p>
+                              </li>
                         ))}
                     </ul>
                 </>
