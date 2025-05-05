@@ -4,14 +4,14 @@ function GeneralInfo({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(true);
 
   const handleChange = (field, value) => {
-    onChange({...data, [field]: value })
+    onChange({...data, [field]: value });
   };
 
   const handleSave = () => setIsEditing(false);
   const handleEdit = () => setIsEditing(true);
 
   return (
-    <div className="p-4 border rounded-lg shadow-md max-w-md mx-auto my-6">
+    <div className="p-4 border rounded-lg shadow-md w-full my-6">
       <h2 className="text-xl font-semibold mb-4">General Information</h2>
       <div className="space-y-4">
         <div>
@@ -20,7 +20,7 @@ function GeneralInfo({ data, onChange }) {
             type="text"
             className="w-full border p-2 rounded"
             value={data.name}
-            onChange={(e) => handleChange(e.target.value)}
+            onChange={(e) => handleChange("name", e.target.value)}
             placeholder="Joe Bloggs"
             disabled={!isEditing}
           />
@@ -31,7 +31,7 @@ function GeneralInfo({ data, onChange }) {
             type="tel"
             className="w-full border p-2 rounded"
             value={data.telephone}
-            onChange={(e) => handleChange(e.target.value)}
+            onChange={(e) => handleChange("telephone", e.target.value)}
             placeholder="0 123 456 78910"
             disabled={!isEditing}
           />
@@ -42,7 +42,7 @@ function GeneralInfo({ data, onChange }) {
             type="email"
             className="w-full border p-2 rounded"
             value={data.email}
-            onChange={(e) => handleChange(e.target.value)}
+            onChange={(e) => handleChange("email", e.target.value)}
             placeholder="you@example.com"
             disabled={!isEditing}
           />
