@@ -1,18 +1,14 @@
 import { useState } from "react";
 
-function GeneralInfo() {
-  const [name, setName] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [email, setEmail] = useState("");
+function GeneralInfo({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(true);
 
-  const handleSave = () => {
-    setIsEditing(false);
+  const handleChange = (field, value) => {
+    onChange({...data, [field]: value })
   };
 
-  const handleEdit = () => {
-    setIsEditing(true);
-  };
+  const handleSave = () => setIsEditing(false);
+  const handleEdit = () => setIsEditing(true);
 
   return (
     <div className="p-4 border rounded-lg shadow-md max-w-md mx-auto my-6">
@@ -23,8 +19,8 @@ function GeneralInfo() {
           <input
             type="text"
             className="w-full border p-2 rounded"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={data.name}
+            onChange={(e) => handleChange(e.target.value)}
             placeholder="Joe Bloggs"
             disabled={!isEditing}
           />
@@ -34,8 +30,8 @@ function GeneralInfo() {
           <input
             type="tel"
             className="w-full border p-2 rounded"
-            value={telephone}
-            onChange={(e) => setTelephone(e.target.value)}
+            value={data.telephone}
+            onChange={(e) => handleChange(e.target.value)}
             placeholder="0 123 456 78910"
             disabled={!isEditing}
           />
@@ -45,8 +41,8 @@ function GeneralInfo() {
           <input
             type="email"
             className="w-full border p-2 rounded"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={data.email}
+            onChange={(e) => handleChange(e.target.value)}
             placeholder="you@example.com"
             disabled={!isEditing}
           />
