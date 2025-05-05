@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+// IMPLEMENT SAVE/EDIT LOGIC FROM PROMPT
+
 function GeneralInfo() {
     const [name, setName] = useState("");
     const [telephone, setTelephone] = useState("");
