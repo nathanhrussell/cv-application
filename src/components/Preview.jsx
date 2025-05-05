@@ -9,7 +9,7 @@ function Preview({ generalInfo, educationList, workExperienceList }) {
         {educationList.length > 0 && (
           <>
             <h3 className="text-lg font-semibold mt-6 mb-2">Education</h3>
-            <ul className="list-disc list-inside space-y-2">
+            <ul className="list-inside space-y-2">
               {educationList
                 .filter((entry) => !entry.isEditing)
                 .map((entry) => (
@@ -26,7 +26,7 @@ function Preview({ generalInfo, educationList, workExperienceList }) {
         {workExperienceList.length > 0 && (
                 <>
                     <h3 className="text-lg font-semibold mt-6 mb-2">Work Experience</h3>
-                    <ul className="list-disc list-inside space-y-2">
+                    <ul className=" list-inside space-y-2">
                     {workExperienceList
                         .filter((entry) => !entry.isEditing)
                         .map((entry) => (
