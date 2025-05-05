@@ -3,6 +3,7 @@ import GeneralInfo from "./components/GeneralInfo";
 import Education from "./components/Education";
 import WorkExperience from "./components/WorkExperience";
 import Preview from "./components/Preview";
+import "./App.css"
 
 function App() {
   const [showPreview, setShowPreview] = useState(false);
