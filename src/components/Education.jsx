@@ -1,37 +1,33 @@
 import { useState } from "react";
 
-function Education() {
-  const [entries, setEntries] = useState([
-    { id: Date.now(), institution: "", qualification: "", year: "", isEditing: true },
-  ]);
-
+function Education({ data, onChange }) {
   const handleChange = (id, field, value) => {
-    setEntries((prev) =>
-      prev.map((entry) =>
+    onChange(
+      data.map((entry) =>
         entry.id === id ? { ...entry, [field]: value } : entry
       )
     );
   };
 
   const handleSave = (id) => {
-    setEntries((prev) =>
-      prev.map((entry) =>
+    onChange(
+      data.map((entry) =>
         entry.id === id ? { ...entry, isEditing: false } : entry
       )
     );
   };
 
   const handleEdit = (id) => {
-    setEntries((prev) =>
-      prev.map((entry) =>
+    onChange(
+      data.map((entry) =>
         entry.id === id ? { ...entry, isEditing: true } : entry
       )
     );
   };
 
   const handleAddEntry = () => {
-    setEntries((prev) => [
-      ...prev,
+    onChange([
+      ...data,
       {
         id: Date.now(),
         institution: "",
@@ -43,14 +39,14 @@ function Education() {
   };
 
   const handleRemoveEntry = (id) => {
-    setEntries((prev) => prev.filter((entry) => entry.id !== id));
+    onChange(data.filter((entry) => entry.id !== id));
   };
 
   return (
     <div className="p-4 border rounded-lg shadow-md max-w-md mx-auto my-6">
       <h2 className="text-xl font-semibold mb-4">Education</h2>
 
-      {entries.map((entry) => (
+      {data.map((entry) => (
         <div
           key={entry.id}
           className="mb-6 border-b pb-4 last:border-b-0 last:pb-0"
