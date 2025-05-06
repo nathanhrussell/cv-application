@@ -4,11 +4,13 @@ import Education from "./components/Education";
 import WorkExperience from "./components/WorkExperience";
 import Preview from "./components/Preview";
 import "./App.css"
+import FinalCV from "./components/FinalCV";
 
 function App() {
   const [showPreview, setShowPreview] = useState(false);
   const [educationList, setEducationList] = useState([]);
   const [workExperienceList, setWorkExperienceList] = useState([]);
+  const [showFinalCV, setShowFinalCV] = useState(false);
 
   const [generalInfo, setGeneralInfo] = useState({
     name: "",
@@ -42,6 +44,27 @@ function App() {
         workExperienceList={workExperienceList}
         />
       )}
+
+      {showPreview && (
+        <div className="mt-4 text-center">
+          <button
+            className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+            onClick={() => setShowFinalCV(true)}
+          >
+            Generate CV
+          </button>
+        </div>
+      )}
+
+      {showFinalCV && (
+        <FinalCV
+        generalInfo={generalInfo}
+        educationList={educationList}
+        workExperienceList={workExperienceList}
+        />
+      )}
+
+
     </div>
   );
 }
